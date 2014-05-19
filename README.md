@@ -1,3 +1,5 @@
+Used this small project to learn about developing chrome extensions.
+
 This chrome extension logs in trakt (http://trakt.tv/) episodes you have watched online in BBC iPlayer or Channel 4.
 It will automatically log the episode once you go into the its page, without checking whether you are watching the episode or not. Trying to improve on this area for the future.
 
