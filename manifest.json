@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Trakt logger for BBC iplayer",
+  "description": "This extension uses trakt to mark as seen episodes of tv series watched on BBC iPlayer and channel4od",
+  "version": "1.0",
+
+  "permissions": ["tabs", "<all_urls>"],
+  "background": {
+    "scripts": ["backSeries.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.bbc.co.uk/iplayer/*", "http://www.channel4.com/programmes/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
