@@ -17,13 +17,14 @@ Picks up the episode info from the player data.
 Netflix:
 Picks up the episode info from the player data.
 
-##HOW TO USE THIS EXTENSION
+##How to setup the extension
 Register your own app on trakt.tv and generate the needed client_id, client_secret, access_token and refresh_token.
 Download the extension files and add that info to backSeries.js
 More info on how to generate the ids and tokens in trakt API docs:
 http://docs.trakt.apiary.io/#reference/authentication-oauth
 Install the extension in your Chrome (You will need to be in developer mode if you want to debug it).
 
-content.js is the content_script that gathers information from the page DOM to send to the background script.
-backSeries.js is the background script that handles loging the episode into trakt.
-manifest.json is the chrome extension manifest.
+##Files
+1. content.js is the content_script that gathers information from the page DOM to send to the background script.
+2. backSeries.js is the background script that handles loging the episode into trakt.
+3. manifest.json is the chrome extension manifest.
