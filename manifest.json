@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://www.bbc.co.uk/iplayer/*", "http://www.channel4.com/programmes/*", "https://www.amazon.co.uk/*", "https://www.netflix.com/watch/*"],
+      "matches": ["http://www.bbc.co.uk/iplayer/*", "http://www.channel4.com/programmes/*", "https://www.amazon.co.uk/*", "https://www.netflix.com/*"],
       "js": ["content.js"]
     }
   ]

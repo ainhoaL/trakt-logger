@@ -80,7 +80,7 @@ function createRequest(method, uri, authorizationHeader) {
 		}
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.setRequestHeader("trakt-api-version", "2");
-		xhr.setRequestHeader("trakt-api-key", client_id);
+		xhr.setRequestHeader("trakt-api-key", clientId);
 		return xhr;
 }
 

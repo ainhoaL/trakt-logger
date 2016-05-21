@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-      	if (request.method == "getChannel4EpisodeInfo"){
+      	if (request.method === "getChannel4EpisodeInfo"){
           		//Channel 4 series - get the info from the title and episode info divs
           		var seriesTitle = document.getElementsByClassName("multi-line-title")[0].innerText.trim();
           		var seasonAndEpisode = document.getElementsByClassName("odPlayer-title")[0].innerText.trim().split(" ");
@@ -24,12 +24,18 @@ chrome.runtime.onMessage.addListener(
               sendResponse({series: seriesTitle, season: seasonNumber, episode: episodeNumber});
         }
         else if (request.method === "getNetflixEpisodeInfo") {
+              //Need to wait for the elements to show up (the page loads but then netflix is loading the player independently)
+              //Find a better way to do this... find when the player is loaded. Rather than a set timeout.
+              var timeoutID = window.setTimeout(function() {
+                  var seriesInfo = document.getElementsByClassName("player-status")[0];
+                  var seriesTitle = seriesInfo.childNodes[0].innerText.trim();
+                  var season = seriesInfo.childNodes[1].innerText.split(" ");
+                  var seasonNumber = season[1].substring(0, season[1].length - 1);
+                  var episodeNumber = season[3];
+                  sendResponse({series: seriesTitle, season: seasonNumber, episode: episodeNumber});
 
-              var seriesInfo = document.getElementsByClassName("player-status")[0];
-              var seriesTitle = seriesInfo.childNodes[0].innerText.trim();
-              var season = seriesInfo.childNodes[1].innerText.split(" ");
-              var seasonNumber = season[1].substring(0, season[1].length - 1);
-              var episodeNumber = season[3];
-              sendResponse({series: seriesTitle, season: seasonNumber, episode: episodeNumber});
+              }, 3000);
+
+              return true; //By returning true we tell the backgrond script the function will return asynchronously
         }
 });
